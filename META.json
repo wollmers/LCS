@@ -41,6 +41,7 @@
       },
       "test" : {
          "requires" : {
+            "Test::Deep" : "0",
             "Test::More" : "0.88"
          }
       }
@@ -57,7 +58,7 @@
          "web" : "https://github.com/wollmers/LCS"
       }
    },
-   "version" : "0.01",
+   "version" : "0.02",
    "x_contributors" : [
       "Helmut Wollmersdorfer <helmut@wollmersdorfer.at>"
    ]
