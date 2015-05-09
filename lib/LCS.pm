@@ -169,7 +169,8 @@ sub LCS {
       }
     }
   }
-  my $path = $self->_print_lcs($X,$Y,$c,$m,$n,[]);
+  my $path = $self->_lcs($X,$Y,$c,$m,$n,[]);
+
   return $path;
 }
 
@@ -178,20 +179,22 @@ sub max {
   ($_[0] > $_[1]) ? $_[0] : $_[1];
 }
 
-sub _print_lcs {
+
+sub _lcs {
   my ($self,$X,$Y,$c,$i,$j,$L) = @_;
 
-  if ($i==0 || $j==0) { return ([]); }
-  if ($X->[$i-1] eq $Y->[$j-1]) {
-    $L = $self->_print_lcs($X,$Y,$c,$i-1,$j-1,$L);
-    #print $X->[$i-1];
-    push @{$L},[$i-1,$j-1];
-  }
-  elsif ($c->[$i][$j] == $c->[$i-1][$j]) {
-    $L = $self->_print_lcs($X,$Y,$c,$i-1,$j,$L);
-  }
-  else {
-    $L = $self->_print_lcs($X,$Y,$c,$i,$j-1,$L);
+  while ($i > 0 && $j > 0) {
+    if ($X->[$i-1] eq $Y->[$j-1]) {
+      unshift @{$L},[$i-1,$j-1];
+      $i--;
+      $j--;
+    }
+    elsif ($c->[$i][$j] == $c->[$i-1][$j]) {
+      $i--;
+    }
+    else {
+      $j--;
+    }
   }
   return $L;
 }
@@ -200,19 +203,22 @@ sub _print_lcs {
 sub _all_lcs {
   my ($self,$ranks,$rank,$max) = @_;
 
-  my $R;
-  if ($rank > $max) {return [[]]} # no matches
-  if ($rank == $max) {
-    return [ map { [$_] } @{$ranks->{$rank}} ];
-  }
+  my $R = [[]];
 
-  my $tails = $self->_all_lcs($ranks,$rank+1,$max);
-  for my $tail (@$tails) {
-    for my $hunk (@{$ranks->{$rank}}) {
-      if (($tail->[0][0] > $hunk->[0]) && ($tail->[0][1] > $hunk->[1])) {
-        push @$R,[$hunk,@$tail];
+  while ($rank <= $max) {
+    my @temp;
+    for my $path (@$R) {
+      for my $hunk (@{$ranks->{$rank}}) {
+        if (scalar @{$path} == 0) {
+          push @temp,[$hunk];
+        }
+        elsif (($path->[-1][0] < $hunk->[0]) && ($path->[-1][1] < $hunk->[1])) {
+          push @temp,[@$path,$hunk];
+        }
       }
     }
+    @$R = @temp;
+    $rank++;
   }
   return $R;
 }
@@ -248,8 +254,6 @@ sub allLCS {
   my $max = scalar keys %$ranks;
   return $self->_all_lcs($ranks,1,$max);
 }
-
-
 
 1;
 __END__

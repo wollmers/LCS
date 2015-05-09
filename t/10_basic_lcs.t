@@ -19,12 +19,12 @@ use_ok($class);
 my $object = new_ok($class);
 
 if (1) {
-ok($object->new());
-ok($object->new(1,2));
-ok($object->new({}));
-ok($object->new({a => 1}));
+  ok($object->new());
+  ok($object->new(1,2));
+  ok($object->new({}));
+  ok($object->new({a => 1}));
 
-ok($class->new());
+  ok($class->new());
 }
 
 my $examples = [
@@ -138,20 +138,18 @@ for my $example (@$examples) {
 use LCS::Tiny;
 
 if (1) {
-my $class = 'LCS::Tiny';
+  my $class = 'LCS::Tiny';
 
-use_ok($class);
+  use_ok($class);
 
-my $object = new_ok($class);
+  my $object = new_ok($class);
 
+  ok($object->new());
+  ok($object->new(1,2));
+  ok($object->new({}));
+  ok($object->new({a => 1}));
 
-ok($object->new());
-ok($object->new(1,2));
-ok($object->new({}));
-ok($object->new({a => 1}));
-
-ok($class->new());
-
+  ok($class->new());
 }
 
 
@@ -208,7 +206,7 @@ for my $example (@$examples) {
 
 if (1) {
 for my $example (@$examples) {
-#for my $example ($examples->[15]) {
+#for my $example ($examples->[1]) {
   my $a = $example->[0];
   my $b = $example->[1];
   my @a = $a =~ /([^_])/g;

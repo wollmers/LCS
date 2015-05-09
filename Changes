@@ -1,6 +1,8 @@
 Revision history for LCS
 
 {{$NEXT}}
+        - added benchmarks
+        - loopified recursions
 
 0.02  2015-05-06 07:10:53 CEST
         - added tests
