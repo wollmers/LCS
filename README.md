@@ -2,6 +2,13 @@
 
 LCS - Longest Common Subsequence
 
+<div>
+    <a href="https://travis-ci.org/wollmers/LCS"><img src="https://travis-ci.org/wollmers/LCS.png" alt="LCS"></a>
+    <a href='https://coveralls.io/r/wollmers/LCS?branch=master'><img src='https://coveralls.io/repos/wollmers/LCS/badge.png?branch=master' alt='Coverage Status' /></a>
+    <a href='http://cpants.cpanauthors.org/dist/LCS'><img src='http://cpants.cpanauthors.org/dist/LCS.png' alt='Kwalitee Score' /></a>
+    <a href="http://badge.fury.io/pl/LCS"><img src="https://badge.fury.io/pl/LCS.svg" alt="CPAN version" height="18"></a>
+</div>
+
 # SYNOPSIS
 
     use LCS;
@@ -63,9 +70,17 @@ LCS is an implementation based on a LCS algorithm.
 
 None by design.
 
+# SOURCE REPOSITORY
+
+[http://github.com/wollmers/LCS](http://github.com/wollmers/LCS)
+
 # AUTHOR
 
 Helmut Wollmersdorfer <helmut.wollmersdorfer@gmail.com>
+
+<div>
+    <a href='http://cpants.cpanauthors.org/author/wollmers'><img src='http://cpants.cpanauthors.org/author/wollmers.png' alt='Kwalitee Score' /></a>
+</div>
 
 # COPYRIGHT
 
