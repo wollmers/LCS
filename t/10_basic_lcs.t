@@ -1,6 +1,6 @@
 #!perl
-use 5.010;
-use open qw(:locale);
+use 5.008;
+
 use strict;
 use warnings;
 use utf8;

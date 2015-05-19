@@ -1,9 +1,9 @@
 #!perl
-use 5.010;
+use 5.006;
 use open qw(:locale);
 use strict;
 use warnings;
-use utf8;
+#use utf8;
 
 use lib qw(../lib/);
 
@@ -94,16 +94,16 @@ if (0) {
 }
 
 if (1) {
-    cmpthese( 100, {
-       'LCS' => sub {
-            $traditional->LCS(@data3)
-       },
+    cmpthese( 1, {
+       #'LCS' => sub {
+       #     $traditional->LCS(@data3)
+       #},
        'LCSidx' => sub {
             Algorithm::Diff::LCSidx(@data3)
         },
-        'LCSXS' => sub {
-            Algorithm::Diff::XS::LCSidx(@data3)
-        },
+        #'LCSXS' => sub {
+        #    Algorithm::Diff::XS::LCSidx(@data3)
+        #},
         'LCSnew' => sub {
             $align_bv->LCS(@data3)
         },

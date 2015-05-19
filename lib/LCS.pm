@@ -3,7 +3,7 @@ package LCS;
 use strict;
 use warnings;
 
-use 5.008;
+use 5.006;
 our $VERSION = '0.03';
 
 use Data::Dumper;
@@ -80,7 +80,8 @@ sub hunks2sequences {
 
 sub align2strings {
   my ($self, $hunks,$gap) = @_;
-  $gap //= '_';
+  #$gap //= '_';
+  $gap = (defined $gap) ? $gap : '_';
 
   my $a = '';
   my $b = '';
@@ -95,7 +96,8 @@ sub align2strings {
 
 sub fill_strings {
   my ($self, $string1,$string2, $gap) = @_;
-  $gap //= '_';
+  #$gap //= '_';
+  $gap = (defined $gap) ? $gap : '_';
 
   my @m = $string1 =~ m/(\X)/g;
   my @n = $string2 =~ m/(\X)/g;
@@ -264,6 +266,15 @@ __END__
 
 LCS - Longest Common Subsequence
 
+=begin html
+
+<a href="https://travis-ci.org/wollmers/LCS"><img src="https://travis-ci.org/wollmers/LCS.png" alt="LCS"></a>
+<a href='https://coveralls.io/r/wollmers/LCS?branch=master'><img src='https://coveralls.io/repos/wollmers/LCS/badge.png?branch=master' alt='Coverage Status' /></a>
+<a href='http://cpants.cpanauthors.org/dist/LCS'><img src='http://cpants.cpanauthors.org/dist/LCS.png' alt='Kwalitee Score' /></a>
+<a href="http://badge.fury.io/pl/LCS"><img src="https://badge.fury.io/pl/LCS.svg" alt="CPAN version" height="18"></a>
+
+=end html
+
 =head1 SYNOPSIS
 
   use LCS;
@@ -334,10 +345,19 @@ Returns the maximum of two numbers.
 
 None by design.
 
+=head1 SOURCE REPOSITORY
+
+L<http://github.com/wollmers/LCS>
 
 =head1 AUTHOR
 
 Helmut Wollmersdorfer E<lt>helmut.wollmersdorfer@gmail.comE<gt>
+
+=begin html
+
+<a href='http://cpants.cpanauthors.org/author/wollmers'><img src='http://cpants.cpanauthors.org/author/wollmers.png' alt='Kwalitee Score' /></a>
+
+=end html
 
 =head1 COPYRIGHT
 

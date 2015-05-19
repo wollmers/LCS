@@ -1,6 +1,7 @@
 Revision history for LCS
 
 {{$NEXT}}
+        - downgrade minimum Perl version
 
 0.03  2015-05-09 11:17:41 CEST
         - added benchmarks

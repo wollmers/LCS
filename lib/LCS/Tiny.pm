@@ -1,10 +1,10 @@
 package LCS::Tiny;
 
-use 5.008;
+use 5.006;
 use strict;
 use warnings;
 our $VERSION = '0.03';
-use utf8;
+#use utf8;
 
 sub new {
   my $class = shift;
@@ -48,6 +48,9 @@ sub LCS {
           $k = $#$thresh+1;
           $thresh->[$k] = $j;
         }
+        #elsif ( $k and $thresh->[$k] > $j and $thresh->[ $k - 1 ] < $j ) {
+		#  $thresh->[$k] = $j;
+        #}
         else {
           # binary search for insertion point
           $k = 0;
