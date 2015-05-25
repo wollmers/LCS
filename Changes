@@ -1,6 +1,7 @@
 Revision history for LCS
 
 {{$NEXT}}
+        - improved backwards compatibility
 
 0.04  2015-05-19 22:55:36 CEST
         - downgrade minimum Perl version
