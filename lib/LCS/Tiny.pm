@@ -97,7 +97,7 @@ LCS::Tiny - Tiny implementation of the
 
 =head1 SYNOPSIS
 
-  use Align::Sequence::BV;
+  use LCS::Tiny;
 
   $alg = LCS::Tiny->new;
   $lcs = $alg->LCS(\@a,\@b);
