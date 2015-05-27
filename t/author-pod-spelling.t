@@ -12,15 +12,13 @@ use Test::More;
 eval "use Test::Spelling";
 if ( $@ ) {
   plan skip_all => 'Test::Spelling required for testing POD';
-} 
-else {          
+}
+else {
   add_stopwords(qw(
-     AproJo
      Helmut
-     Mojolicious
      Wollmersdorfer
-     jQuery
-     websockets
+     Subsequence
+     Subsequences
   ));
   all_pod_files_spelling_ok();
 }
