@@ -31,7 +31,8 @@
       },
       "develop" : {
          "requires" : {
-            "Test::Pod" : "1.41"
+            "Test::Pod" : "1.41",
+            "Test::Spelling" : "0"
          }
       },
       "runtime" : {

@@ -12,6 +12,7 @@ use lib qw(../lib/);
 use Algorithm::Diff;
 use Algorithm::Diff::XS;
 use String::Similarity;
+use String::LCSS_XS qw(lcss lcss_all);
 #use Algorithm::LCS;
 
 use Benchmark qw(:all) ;
@@ -50,7 +51,7 @@ my @data3 = ([qw/a b d/ x 50], [qw/b a d c/ x 50]);
 my @strings3 = map { join('',@$_) } @data3;
 
 print STDERR 'S::Similarity: ',similarity(@strings),"\n";
-
+print STDERR 'S::LCSS_XS: ',Dumper([ lcss_all('Chrerrplzon','Choerephon') ]),"\n";
 
 
 if (0) {
@@ -69,6 +70,9 @@ if (0) {
         },
         'S::Sim' => sub {
             similarity(@strings)
+        },
+        'S::LCSS_XS' => sub {
+            [ lcss('Chrerrplzon','Choerephon') ]
         },
     });
 }
