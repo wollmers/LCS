@@ -1,6 +1,7 @@
 Revision history for LCS
 
 {{$NEXT}}
+        - added author tests
 
 0.07  2015-05-27 20:29:07 CEST
         - added spelling test

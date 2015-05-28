@@ -16,7 +16,7 @@ sub new {
 
 # J. W. Hunt and T. G. Szymanski.
 # A fast algorithm for computing longest common subsequences.
-# Commun. ACM, 20(5):350–353, 1977.
+# Commun. ACM, 20(5):350-353, 1977.
 
 sub LCS {
   my ($self, $a, $b) = @_;
@@ -49,7 +49,7 @@ sub LCS {
           $thresh->[$k] = $j;
         }
         #elsif ( $k and $thresh->[$k] > $j and $thresh->[ $k - 1 ] < $j ) {
-		#  $thresh->[$k] = $j;
+        #  $thresh->[$k] = $j;
         #}
         else {
           # binary search for insertion point

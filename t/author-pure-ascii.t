@@ -14,7 +14,11 @@ if ( $@ ) {
   plan skip_all => 'Test::PureASCII required for testing POD';
 }
 else {
-  all_perl_files_are_pure_ascii();
+  all_perl_files_are_pure_ascii({
+    forbid_control => 1,
+    forbid_tab => 1,
+    forbid_cr => 1,
+  });
 }
 
 
