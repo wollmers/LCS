@@ -9,12 +9,12 @@ BEGIN {
 
 use Test::More;
 
-eval "use Test::MinimumVersion";
+eval "use Test::PureASCII";
 if ( $@ ) {
-  plan skip_all => 'Test::MinimumVersion required for testing POD';
+  plan skip_all => 'Test::PureASCII required for testing POD';
 }
 else {
-  all_minimum_version_from_metajson_ok();
+  all_perl_files_are_pure_ascii();
 }
 
 
