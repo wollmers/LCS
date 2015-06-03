@@ -278,10 +278,32 @@ LCS - Longest Common Subsequence
 =head1 SYNOPSIS
 
   use LCS;
+  my $lcs = LCS->LCS( [qw(a b)], [qw(a b b)] );
+
+  # $lcs now contains an arrayref of matching positions
+  # same as
+  $lcs = [
+    [ 0, 0 ],
+    [ 1, 2 ]
+  ];
+
+  my $all_lcs = LCS->allLCS( [qw(a b)], [qw(a b b)] );
+
+  # same as
+  $all_lcs = [
+    [
+      [ 0, 0 ],
+      [ 1, 1 ]
+    ],
+    [
+      [ 0, 0 ],
+      [ 1, 2 ]
+    ]
+  ];
 
 =head1 DESCRIPTION
 
-LCS is an implementation based on a LCS algorithm.
+LCS is an implementation based on the traditional LCS algorithm.
 
 =head2 CONSTRUCTOR
 
@@ -306,18 +328,85 @@ Finds a Longest Common Subsequence, taking two arrayrefs as method
 arguments. It returns an array reference of corresponding
 indices, which are represented by 2-element array refs.
 
+  # position  0 1 2
+  my $a = [qw(a b  )];
+  my $b = [qw(a b b)];
+
+  my $lcs = LCS->LCS($a,$b);
+
 =item LLCS(\@a,\@b)
 
 Calculates the length of the Longest Common Subsequence.
+
+  my $llcs = LCS->LLCS( [qw(a b)], [qw(a b b)] );
+  print $llcs,"\n";   # prints 2
+
+  # is the same as
+  $llcs = @{LCS->LCS( [qw(a b)], [qw(a b b)] )};
 
 =item allLCS(\@a,\@b)
 
 Finds all Longest Common Subsequences. It returns an array reference of all
 LCS.
 
+  my $all_lcs = LCS->allLCS( [qw(a b)], [qw(a b b)] );
+
+  # same as
+  $all_lcs = [
+    [
+      [ 0, 0 ],
+      [ 1, 1 ]
+    ],
+    [
+      [ 0, 0 ],
+      [ 1, 2 ]
+    ]
+  ];
+
+The purpose is mainly for testing LCS algorithms, as they only return one of the optimal
+solutions.
+
+  use Test::More;
+  use Test::Deep;
+  use LCS;
+  use LCS::Tiny;
+
+  cmp_deeply(
+    LCS::Tiny->LCS(\@a,\@b),
+    any(@{LCS->allLCS(\@a,\@b)} ),
+    "Tiny::LCS $a, $b"
+  );
+
 =item lcs2align(\@a,\@b,$LCS)
 
 Returns the two sequences aligned, missing positions are represented as empty strings.
+
+  use Data::Dumper;
+  use LCS;
+  print Dumper(
+    LCS->lcs2align(
+      [qw(a   b)],
+      [qw(a b b)],
+      LCS->LCS([qw(a b)],[qw(a b b)])
+    )
+  );
+  # prints
+
+  $VAR1 = [
+            [
+              'a',
+              'a'
+            ],
+            [
+              '',
+              'b'
+            ],
+            [
+              'b',
+              'b'
+            ]
+  ];
+
 
 =item sequences2hunks($a, $b)
 
@@ -327,9 +416,32 @@ Transforms two array references of scalars to an array of hunks (two element arr
 
 Transforms an array of hunks to two arrays of scalars.
 
+  use Data::Dumper;
+  use LCS;
+  print Dumper(
+    LCS->hunks2sequences(
+      LCS->LCS([qw(a b)],[qw(a b b)])
+    )
+  );
+  # prints (reformatted)
+  $VAR1 = [ 0, 1 ];
+  $VAR2 = [ 0, 2 ];
+
+
 =item align2strings($hunks, $gap_character)
 
-Returns two strings aligned with gap characters.
+Returns two strings aligned with gap characters. The defaul gap character is '_'.
+
+  use Data::Dumper;
+  use LCS;
+  print Dumper(
+    LCS->align2strings(
+      LCS->lcs2align([qw(a b)],[qw(a b b)],LCS->LCS([qw(a b)],[qw(a b b)]))
+    )
+  );
+  $VAR1 = 'a_b';
+  $VAR2 = 'abb';
+
 
 =item fill_strings($string1, $string2, $fill_character)
 
