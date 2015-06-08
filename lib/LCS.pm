@@ -14,6 +14,13 @@ sub new {
   bless @_ ? @_ > 1 ? {@_} : {%{$_[0]}} : {}, ref $class || $class;
 }
 
+sub align {
+  my ($self, $X, $Y) = @_;
+
+  return $self->lcs2align(
+    $X, $Y, $self->LCS($X,$Y)
+  );
+}
 
 sub lcs2align {
   my ($self, $X, $Y, $LCS) = @_;
@@ -407,6 +414,9 @@ Returns the two sequences aligned, missing positions are represented as empty st
             ]
   ];
 
+=item align(\@a,\@b)
+
+Returns the same as lcs2align() calling LCS() itself.
 
 =item sequences2hunks($a, $b)
 
@@ -430,7 +440,7 @@ Transforms an array of hunks to two arrays of scalars.
 
 =item align2strings($hunks, $gap_character)
 
-Returns two strings aligned with gap characters. The defaul gap character is '_'.
+Returns two strings aligned with gap characters. The default gap character is '_'.
 
   use Data::Dumper;
   use LCS;
@@ -456,6 +466,15 @@ Returns the maximum of two numbers.
 =head2 EXPORT
 
 None by design.
+
+=head1 REFERENCES
+
+Ronald I. Greenberg. Fast and Simple Computation of All Longest Common Subsequences,
+http://arxiv.org/pdf/cs/0211001.pdf
+
+Robert A. Wagner and Michael J. Fischer. The string-to-string correction problem.
+Journal of the ACM, 21(1):168–173, 1974.
+
 
 =head1 SOURCE REPOSITORY
 

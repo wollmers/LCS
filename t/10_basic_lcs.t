@@ -213,6 +213,31 @@ for my $example (@$examples) {
   my @b = $b =~ /([^_])/g;
 
   cmp_deeply(
+    $object->align(\@a,\@b),
+    any(
+      map { $object->lcs2align(\@a,\@b,$_) } @{$object->allLCS(\@a,\@b)}
+    ),
+    "lcs2align $a, $b"
+  );
+  if (0) {
+    $Data::Dumper::Deepcopy = 1;
+    print STDERR 'allLCS: ',Data::Dumper->Dump([
+      map { $object->lcs2align(\@a,\@b,$_) } @{$object->allLCS(\@a,\@b)}
+    ]),"\n";
+    print STDERR 'LCS: ',Dumper($object->lcs2align(\@a,\@b,$object->LCS(\@a,\@b))),"\n";
+  }
+}
+}
+
+if (1) {
+for my $example (@$examples) {
+#for my $example ($examples->[1]) {
+  my $a = $example->[0];
+  my $b = $example->[1];
+  my @a = $a =~ /([^_])/g;
+  my @b = $b =~ /([^_])/g;
+
+  cmp_deeply(
     $object->LCS(\@a,\@b),
     any(@{$object->allLCS(\@a,\@b)} ),
     "LCS $a, $b"

@@ -141,6 +141,14 @@ None by design.
 
 Algorithm::Diff
 
+=head1 REFERENCES
+
+James W. Hunt and Thomas G. Szymanski. A fast algorithm for computing longest common
+subsequences. Communications of the ACM, 20(5):350–353, 1977.
+
+Hunt, J.W. and McIlroy, M.D. An Algorithm for Differential File Comparison.
+Computing Science Technical Report 41, Bell Laboratories (1975).
+
 =head1 AUTHOR
 
 Helmut Wollmersdorfer E<lt>helmut.wollmersdorfer@gmail.comE<gt>
