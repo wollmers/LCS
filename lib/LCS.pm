@@ -312,6 +312,10 @@ LCS - Longest Common Subsequence
 
 LCS is an implementation based on the traditional LCS algorithm.
 
+It contains reference implementations working slow but correct.
+
+Also some utility methods are added to reformat the result.
+
 =head2 CONSTRUCTOR
 
 =over 4
@@ -371,7 +375,8 @@ LCS.
   ];
 
 The purpose is mainly for testing LCS algorithms, as they only return one of the optimal
-solutions.
+solutions. If we want to know, that the result is one of the optimal solutions, we need
+to test, if the solution is part of all optimal LCS:
 
   use Test::More;
   use Test::Deep;
@@ -416,7 +421,7 @@ Returns the two sequences aligned, missing positions are represented as empty st
 
 =item align(\@a,\@b)
 
-Returns the same as lcs2align() calling LCS() itself.
+Returns the same as lcs2align() via calling LCS() itself.
 
 =item sequences2hunks($a, $b)
 
@@ -455,7 +460,9 @@ Returns two strings aligned with gap characters. The default gap character is '_
 
 =item fill_strings($string1, $string2, $fill_character)
 
-If one of the two strings is shorter, fills it up to the same length.
+Returns both strings filling up the shorter with $fill_character to the same length.
+
+The default $fill_character is '_'.
 
 =item max($i, $j)
 
@@ -466,6 +473,14 @@ Returns the maximum of two numbers.
 =head2 EXPORT
 
 None by design.
+
+=head1 STABILITY
+
+Until release of version 1.00 the included methods, names of methods and their
+interface is subject to change.
+
+Beginning with version 1.00 the specification will be stable, i.e. not changed between
+major versions.
 
 =head1 REFERENCES
 
