@@ -19,6 +19,11 @@ else {
      Wollmersdorfer
      Subsequence
      Subsequences
+     ACM
+     Greenberg
+     McIlroy
+     Szymanski
+     subsequences
   ));
   all_pod_files_spelling_ok();
 }

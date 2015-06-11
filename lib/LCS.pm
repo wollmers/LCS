@@ -488,7 +488,7 @@ Ronald I. Greenberg. Fast and Simple Computation of All Longest Common Subsequen
 http://arxiv.org/pdf/cs/0211001.pdf
 
 Robert A. Wagner and Michael J. Fischer. The string-to-string correction problem.
-Journal of the ACM, 21(1):168–173, 1974.
+Journal of the ACM, 21(1):168-173, 1974.
 
 
 =head1 SOURCE REPOSITORY

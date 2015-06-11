@@ -39,6 +39,10 @@ LCS - Longest Common Subsequence
 
 LCS is an implementation based on the traditional LCS algorithm.
 
+It contains reference implementations working slow but correct.
+
+Also some utility methods are added to reformat the result.
+
 ## CONSTRUCTOR
 
 - new()
@@ -91,7 +95,8 @@ LCS is an implementation based on the traditional LCS algorithm.
         ];
 
     The purpose is mainly for testing LCS algorithms, as they only return one of the optimal
-    solutions.
+    solutions. If we want to know, that the result is one of the optimal solutions, we need
+    to test, if the solution is part of all optimal LCS:
 
         use Test::More;
         use Test::Deep;
@@ -136,7 +141,7 @@ LCS is an implementation based on the traditional LCS algorithm.
 
 - align(\\@a,\\@b)
 
-    Returns the same as lcs2align() calling LCS() itself.
+    Returns the same as lcs2align() via calling LCS() itself.
 
 - sequences2hunks($a, $b)
 
@@ -173,7 +178,9 @@ LCS is an implementation based on the traditional LCS algorithm.
 
 - fill\_strings($string1, $string2, $fill\_character)
 
-    If one of the two strings is shorter, fills it up to the same length.
+    Returns both strings filling up the shorter with $fill\_character to the same length.
+
+    The default $fill\_character is '\_'.
 
 - max($i, $j)
 
@@ -182,6 +189,22 @@ LCS is an implementation based on the traditional LCS algorithm.
 ## EXPORT
 
 None by design.
+
+# STABILITY
+
+Until release of version 1.00 the included methods, names of methods and their
+interface is subject to change.
+
+Beginning with version 1.00 the specification will be stable, i.e. not changed between
+major versions.
+
+# REFERENCES
+
+Ronald I. Greenberg. Fast and Simple Computation of All Longest Common Subsequences,
+http://arxiv.org/pdf/cs/0211001.pdf
+
+Robert A. Wagner and Michael J. Fischer. The string-to-string correction problem.
+Journal of the ACM, 21(1):168-173, 1974.
 
 # SOURCE REPOSITORY
 
