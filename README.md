@@ -188,6 +188,14 @@ Also some utility methods are added to reformat the result.
 
     The default $fill\_character is '\_'.
 
+- clcs2lcs($compact\_lcs)
+
+    Convert compact LCS to LCS.
+
+- lcs2clcs($compact\_lcs)
+
+    Convert LCS to compact LCS.
+
 - max($i, $j)
 
     Returns the maximum of two numbers.
