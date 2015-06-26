@@ -72,6 +72,31 @@ sub sequences2hunks {
   return [ map { [ $a->[$_], $b->[$_] ] } 0..$#$a ];
 }
 
+sub clcs2lcs {
+  my ($self, $clcs) = @_;
+  my $lcs = [];
+  for my $entry (@$clcs) {
+    for (my $i = 0; $i < $entry->[2];$i++) {
+      push @$lcs,[$entry->[0]+$i,$entry->[1]+$i];
+    }
+  }
+  return $lcs;
+}
+
+sub lcs2clcs {
+  my ($self, $lcs) = @_;
+  my $clcs = [];
+  for my $entry (@$lcs) {
+    if (@$clcs && $clcs->[-1]->[0] + $clcs->[-1]->[2] == $entry->[0]) {
+      $clcs->[-1]->[2]++;
+    }
+    else {
+      push @$clcs,[$entry->[0],$entry->[1],1];
+    }
+  }
+  return $clcs;
+}
+
 sub hunks2sequences {
   my ($self, $hunks) = @_;
 
@@ -345,6 +370,12 @@ indices, which are represented by 2-element array refs.
 
   my $lcs = LCS->LCS($a,$b);
 
+  # same like
+  $lcs = [
+      [ 0, 0 ],
+      [ 1, 1 ]
+  ];
+
 =item LLCS(\@a,\@b)
 
 Calculates the length of the Longest Common Subsequence.
@@ -353,7 +384,7 @@ Calculates the length of the Longest Common Subsequence.
   print $llcs,"\n";   # prints 2
 
   # is the same as
-  $llcs = @{LCS->LCS( [qw(a b)], [qw(a b b)] )};
+  $llcs = scalar @{LCS->LCS( [qw(a b)], [qw(a b b)] )};
 
 =item allLCS(\@a,\@b)
 
@@ -477,7 +508,7 @@ None by design.
 =head1 STABILITY
 
 Until release of version 1.00 the included methods, names of methods and their
-interface is subject to change.
+interfaces are subject to change.
 
 Beginning with version 1.00 the specification will be stable, i.e. not changed between
 major versions.

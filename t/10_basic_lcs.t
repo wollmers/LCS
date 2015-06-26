@@ -85,14 +85,14 @@ if (0) {
   is($object->max(0,0),0,'0,0');
 }
 
-if (1) {
+if (0) {
   is(LCS::max(1,1),1,'1,1');
   is(LCS::max(1,0),1,'1,0');
   is(LCS::max(0,1),1,'0,1');
   is(LCS::max(0,0),0,'0,0');
 }
 
-if (1) {
+if (0) {
   is_deeply([$object->fill_strings(qw(a b))],[qw(a b)],'fill a b');
   is_deeply([$object->fill_strings(qw(aa b))],[qw(aa b_)],'fill aa b_');
   is_deeply([$object->fill_strings(qw(a bb))],[qw(a_ bb)],'fill a_ bb');
@@ -118,6 +118,52 @@ for my $example (@$examples) {
   	)],
   [$a,$b], "a2str $a, $b");
 }
+}
+
+if (1) {
+  my $tests = [
+    [
+      [[0,0,1]],
+      [[0,0]]
+    ],
+    [
+      [[0,0,2]],
+      [[0,0],[1,1]]
+    ],
+    [
+      [[0,10,2]],
+      [[0,10],[1,11]]
+    ],
+    [
+      [[10,0,2]],
+      [[10,0],[11,1]]
+    ],
+    [
+      [[0,10,2],     [4,14,2]],
+      [[0,10],[1,11],[4,14],[5,15]]
+    ],
+    [
+      [[10,0,2],     [14,4,2]],
+      [[10,0],[11,1],[14,4],[15,5]]
+    ],
+
+  ];
+  for my $test (@$tests) {
+  #for my $test ($tests->[2]) {
+    is_deeply(
+      $object->clcs2lcs($test->[0]),
+      $test->[1]
+    );
+    #print Dumper($test->[0]);
+    #print Dumper($object->clcs2lcs($test->[0]));
+    #print Dumper($test->[1]);
+    is_deeply(
+      $object->lcs2clcs($test->[1]),
+      $test->[0]
+    );
+  }
+
+
 }
 
 if (1) {
