@@ -65,6 +65,12 @@ Also some utility methods are added to reformat the result.
 
         my $lcs = LCS->LCS($a,$b);
 
+        # same like
+        $lcs = [
+            [ 0, 0 ],
+            [ 1, 1 ]
+        ];
+
 - LLCS(\\@a,\\@b)
 
     Calculates the length of the Longest Common Subsequence.
@@ -73,7 +79,7 @@ Also some utility methods are added to reformat the result.
         print $llcs,"\n";   # prints 2
 
         # is the same as
-        $llcs = @{LCS->LCS( [qw(a b)], [qw(a b b)] )};
+        $llcs = scalar @{LCS->LCS( [qw(a b)], [qw(a b b)] )};
 
 - allLCS(\\@a,\\@b)
 
@@ -193,7 +199,7 @@ None by design.
 # STABILITY
 
 Until release of version 1.00 the included methods, names of methods and their
-interface is subject to change.
+interfaces are subject to change.
 
 Beginning with version 1.00 the specification will be stable, i.e. not changed between
 major versions.

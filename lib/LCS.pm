@@ -495,6 +495,14 @@ Returns both strings filling up the shorter with $fill_character to the same len
 
 The default $fill_character is '_'.
 
+=item clcs2lcs($compact_lcs)
+
+Convert compact LCS to LCS.
+
+=item lcs2clcs($compact_lcs)
+
+Convert LCS to compact LCS.
+
 =item max($i, $j)
 
 Returns the maximum of two numbers.
