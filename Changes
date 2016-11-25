@@ -1,6 +1,7 @@
 Revision history for LCS
 
 {{$NEXT}}
+        - added build requires, MetaProvides::Package
 
 0.10  2015-06-26 05:20:55 CEST
         - improved documentation

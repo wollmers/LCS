@@ -13,3 +13,7 @@ on 'develop' => sub {
   requires 'Test::Pod::Coverage';
   requires 'Test::PureASCII';
 };
+
+on 'build' => sub {
+  requires 'Test::Pod';
+}
