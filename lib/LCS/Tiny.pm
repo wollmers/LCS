@@ -3,7 +3,7 @@ package LCS::Tiny;
 use 5.006;
 use strict;
 use warnings;
-our $VERSION = '0.10';
+our $VERSION = '0.11';
 #use utf8;
 
 sub new {

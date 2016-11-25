@@ -1,6 +1,8 @@
 Revision history for LCS
 
 {{$NEXT}}
+
+0.11  2016-11-25 08:50:35 CET
         - added build requires, MetaProvides::Package
 
 0.10  2015-06-26 05:20:55 CEST

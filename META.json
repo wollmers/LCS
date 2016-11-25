@@ -59,11 +59,11 @@
    "provides" : {
       "LCS" : {
          "file" : "lib/LCS.pm",
-         "version" : "0.10"
+         "version" : "0.11"
       },
       "LCS::Tiny" : {
          "file" : "lib/LCS/Tiny.pm",
-         "version" : "0.10"
+         "version" : "0.11"
       }
    },
    "release_status" : "stable",
@@ -78,7 +78,7 @@
          "web" : "https://github.com/wollmers/LCS"
       }
    },
-   "version" : "0.10",
+   "version" : "0.11",
    "x_contributors" : [
       "Helmut Wollmersdorfer <helmut@wollmersdorfer.at>",
       "Helmut Wollmersdorfer <helmut.wollmersdorfer@fixpunkt.de>"
