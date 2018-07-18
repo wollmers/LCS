@@ -154,29 +154,29 @@ sub LLCS {
   my $n = scalar @$Y;
 
   my $c = [];
+  my $curr = 1;
+  my $prev = 0;
+  my $i;
+  my $j;
 
-  for my $i (0..1) {
-    for my $j (0..$n) {
-      $c->[$i][$j]=0;
+  for $j (0 .. $n) {
+    $c->[$prev][$j] = 0;
+  }
+  $c->[$curr][0] = 0;
+
+  for $i (1 .. $m) {
+    for $j (1 .. $n) {
+      $c->[$curr][$j] = $X->[$i - 1] eq $Y->[$j - 1]
+                        ? $c->[$prev][$j - 1] + 1
+                        : max($c->[$curr][$j - 1],
+                              $c->[$prev][$j]);
     }
+
+    $prev = $curr;
+    $curr ^= 1;
   }
 
-  my ($i,$j);
-
-  for ($i=1; $i <= $m; $i++) {
-    for ($j=1; $j <= $n; $j++) {
-      if ($X->[$i-1] eq $Y->[$j-1]) {
-        $c->[1][$j] = $c->[0][$j-1]+1;
-      }
-      else {
-        $c->[1][$j] = max($c->[1][$j-1],$c->[0][$j]);
-      }
-    }
-    for ($j = 1; $j <= $n; $j++) {
-      $c->[0][$j] = $c->[1][$j];
-    }
-  }
-  return ($c->[1][$n]);
+  return $c->[$prev][$n];
 }
 
 
